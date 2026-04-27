@@ -3,7 +3,7 @@
   // Update this URL with your Render backend URL once deployed
   const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
     ? 'http://localhost:3000' 
-    : 'https://citadel-backend.onrender.com'; 
+    : 'https://citadel-mgt4.onrender.com'; 
 
   let authToken = localStorage.getItem('adminToken');
   let adminRole = localStorage.getItem('adminRole');
