@@ -61,7 +61,24 @@ app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, '..', 'fronten
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email.toLowerCase() });
-    if (user && user.password === password) { // Simple check for now, should use hash
+    if (!user) return res.status(401).json({ error: "Invalid email or password" });
+
+    // Support both plain-text passwords (legacy) and hashed passwords
+    let valid = false;
+    if (user.password && user.password.includes(':')) {
+        // Hashed password (scrypt format: salt:hash)
+        try {
+            const crypto = require('crypto');
+            const [salt, key] = user.password.split(':');
+            const hashBuffer = crypto.scryptSync(password, salt, 64);
+            valid = crypto.timingSafeEqual(hashBuffer, Buffer.from(key, 'hex'));
+        } catch (e) { valid = false; }
+    } else {
+        // Plain-text fallback
+        valid = user.password === password;
+    }
+
+    if (valid) {
         const token = jwt.sign({ id: user._id, email: user.email, role: user.role }, SECRET_KEY, { expiresIn: '24h' });
         res.json({ token, role: user.role });
     } else {
@@ -71,17 +88,37 @@ app.post('/api/login', async (req, res) => {
 
 // API: Data
 app.get('/api/data', async (req, res) => {
-    const data = await SiteData.findOne() || { hero: [], events: [], sermons: [], gallery: [], global: {} };
-    res.json(data);
+    try {
+        const data = await SiteData.findOne().lean() || { hero: [], events: [], sermons: [], gallery: [], global: {} };
+        res.json(data);
+    } catch (err) {
+        console.error('GET /api/data error:', err);
+        res.status(500).json({ error: 'Failed to load data' });
+    }
 });
 
 app.post('/api/data', authenticateToken, async (req, res) => {
-    let data = await SiteData.findOne();
-    if (!data) data = new SiteData(req.body);
-    else Object.assign(data, req.body);
-    await data.save();
-    res.json({ success: true });
+    try {
+        let data = await SiteData.findOne();
+        if (!data) {
+            data = new SiteData(req.body);
+        } else {
+            // Explicitly set each field and mark as modified so Mongoose saves arrays/objects
+            if (req.body.hero    !== undefined) { data.hero    = req.body.hero;    data.markModified('hero'); }
+            if (req.body.events  !== undefined) { data.events  = req.body.events;  data.markModified('events'); }
+            if (req.body.sermons !== undefined) { data.sermons = req.body.sermons; data.markModified('sermons'); }
+            if (req.body.gallery !== undefined) { data.gallery = req.body.gallery; data.markModified('gallery'); }
+            if (req.body.global  !== undefined) { data.global  = req.body.global;  data.markModified('global'); }
+        }
+        await data.save();
+        console.log('✅ Site data saved to MongoDB');
+        res.json({ success: true });
+    } catch (err) {
+        console.error('POST /api/data error:', err);
+        res.status(500).json({ error: 'Failed to save data' });
+    }
 });
+
 
 // API: Uploads
 const storage = process.env.CLOUDINARY_URL ? 
