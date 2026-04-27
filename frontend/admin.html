@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citadel of Truth - Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- Login Overlay -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-card">
+      <div class="login-logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z" />
+        </svg>
+      </div>
+      <h2>Admin Login</h2>
+      <p>Secure panel for Citadel of Truth</p>
+      <form id="login-form">
+        <input type="email" id="admin-email" placeholder="Email Address" required>
+        <input type="password" id="admin-password" placeholder="Password" required>
+        <button type="submit">Access Dashboard &rarr;</button>
+        <div class="login-error" id="login-error"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Dashboard -->
+  <div class="dashboard" id="dashboard" style="display: none;">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="nav-logo-icon"><svg viewBox="0 0 24 24">
+            <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z" />
+          </svg></div>
+        <h3>Citadel Admin</h3>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="active" data-target="hero-section">Hero Slides</a>
+        <a href="#" data-target="events-section">Events</a>
+        <a href="#" data-target="sermons-section">Sermons</a>
+        <a href="#" data-target="gallery-section">Community Gallery</a>
+        <a href="#" data-target="users-section" id="nav-users" style="display:none;">User Management</a>
+        <a href="#" data-target="global-section">Site Images</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <h2>Content Management</h2>
+        <button id="save-all-btn" class="btn-primary">Save All Changes to Website</button>
+      </header>
+
+      <div class="content-body">
+
+        <!-- Hero Section -->
+        <section id="hero-section" class="admin-section active">
+          <div class="section-head">
+            <h3>Hero Banner Slides</h3>
+            <button class="btn-secondary" onclick="addHeroSlide()">+ Add Slide</button>
+          </div>
+          <div class="cards-grid" id="admin-hero-grid"></div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events-section" class="admin-section">
+          <div class="section-head">
+            <h3>Upcoming Events</h3>
+            <button class="btn-secondary" onclick="addEvent()">+ Add Event</button>
+          </div>
+          <div class="cards-grid" id="admin-events-grid"></div>
+        </section>
+
+        <!-- Sermons Section -->
+        <section id="sermons-section" class="admin-section">
+          <div class="section-head">
+            <h3>Recent Sermons</h3>
+            <button class="btn-secondary" onclick="addSermon()">+ Add Sermon</button>
+          </div>
+          <div class="cards-grid" id="admin-sermons-grid"></div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="admin-section">
+          <div class="section-head">
+            <h3>Community Gallery ('Life at Citadel')</h3>
+            <button class="btn-secondary" onclick="addGalleryImage()">+ Add Photo</button>
+          </div>
+          <div class="cards-grid" id="admin-gallery-grid"></div>
+        </section>
+
+        <!-- Users Management Section -->
+        <section id="users-section" class="admin-section">
+          <div class="section-head">
+            <h3>CMS Accounts & Permissions</h3>
+            <button class="btn-secondary" onclick="document.getElementById('new-user-form').style.display='block'">+ Add
+              New User</button>
+          </div>
+
+          <div class="admin-card" id="new-user-form"
+            style="display:none; margin-bottom: 24px; border: 2px solid var(--blue);">
+            <h4>Grant Access</h4>
+            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:12px;">
+              <input type="email" id="new-user-email" placeholder="Email Address"
+                style="padding:10px; border:1px solid #ccc; border-radius:4px; flex:1; min-width:200px;">
+              <input type="text" id="new-user-password" placeholder="Temporary Password"
+                style="padding:10px; border:1px solid #ccc; border-radius:4px; flex:1; min-width:200px;">
+              <select id="new-user-role" style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                <option value="admin">Editor Admin (Manage Content Only)</option>
+                <option value="superadmin">Super Admin (Can add users)</option>
+              </select>
+              <button class="btn-primary" onclick="createUser()">Create Account</button>
+              <button class="btn-outline" style="color:var(--text); border-color:var(--text);"
+                onclick="document.getElementById('new-user-form').style.display='none'">Cancel</button>
+            </div>
+            <div id="new-user-error" style="color:red; font-size:13px; margin-top:10px;"></div>
+          </div>
+
+          <table
+            style="width:100%; border-collapse:collapse; background:rgb(6, 1, 68); border-radius:8px; overflow:hidden; box-shadow:var(--shadow);">
+            <thead style="background:var(--blue-ultra); text-align:left;">
+              <tr>
+                <th style="padding:16px;">Email</th>
+                <th style="padding:16px;">Role</th>
+                <th style="padding:16px; text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Global Images Section -->
+        <section id="global-section" class="admin-section">
+          <div class="section-head">
+            <h3>Global Site Images</h3>
+          </div>
+          <div class="cards-grid" id="admin-global-grid">
+            <div class="admin-card">
+              <div class="input-group">
+                <label>Main Website Logo</label>
+                <input type="file" accept="image/*" onchange="uploadGlobalImage(event, 'logoImage')">
+                <input type="text" id="global-logo" placeholder="Logo URL" readonly>
+              </div>
+              <div class="input-group">
+                <label>About Us Section Image</label>
+                <input type="file" accept="image/*" onchange="uploadGlobalImage(event, 'aboutImage')">
+                <input type="text" id="global-about" placeholder="Image URL" readonly>
+              </div>
+              <div class="input-group">
+                <label>Pastor Section Image</label>
+                <input type="file" accept="image/*" onchange="uploadGlobalImage(event, 'pastorImage')">
+                <input type="text" id="global-pastor" placeholder="Image URL" readonly>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

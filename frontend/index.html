@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citadel of Truth and Mercy Assembly</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="church.css" />
+</head>
+
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon" id="header-logo">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2zm0 10.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 7.5 12 7.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm0 5c-2.25 0-4.2-1.25-5.24-3h10.48C16.2 16.25 14.25 17.5 12 17.5z" />
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        <span>Citadel of Truth</span>
+        <span>and Mercy Assembly</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#beliefs">Beliefs</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#sermons">Sermons</a></li>
+      <li><a href="#give">Give</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Join Us</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#beliefs" onclick="closeMobile()">Beliefs</a>
+    <a href="#events" onclick="closeMobile()">Events</a>
+    <a href="#sermons" onclick="closeMobile()">Sermons</a>
+    <a href="#give" onclick="closeMobile()">Give</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="slides-wrap" id="slidesWrap">
+
+      <!-- Hero slides injected via JS -->
+
+    </div><!-- /slides-wrap -->
+
+    <!-- Arrows -->
+    <button class="slide-arrow prev" id="prevBtn" aria-label="Previous">&#8592;</button>
+    <button class="slide-arrow next" id="nextBtn" aria-label="Next">&#8594;</button>
+
+    <!-- Dots -->
+    <div class="slide-dots">
+      <button class="dot active" data-i="0"></button>
+      <button class="dot" data-i="1"></button>
+      <button class="dot" data-i="2"></button>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ─── SERVICE TIMES BANNER ─── -->
+  <div class="banner">
+    <div class="banner-item">
+      <div class="banner-item-icon">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 15H11v-6h1.5V17zm0-8H11V7h1.5v2z" />
+        </svg>
+      </div>
+      <div class="banner-item-text">
+        <span>Sunday Service</span>
+        <span>8:00 AM &amp; 10:30 AM</span>
+      </div>
+    </div>
+    <div class="banner-divider"></div>
+    <div class="banner-item">
+      <div class="banner-item-icon">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
+        </svg>
+      </div>
+      <div class="banner-item-text">
+        <span>Midweek Reload</span>
+        <span>Wednesday, 5:30 PM</span>
+      </div>
+    </div>
+
+    <div class="banner-divider"></div>
+    <div class="banner-item">
+      <div class="banner-item-icon">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+      </div>
+      <div class="banner-item-text">
+        <span>Location</span>
+        <span>Manna Bridal Building, Beside Firstbank, Unity Rd, Ilorin, Kwara State, Nigeria.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap fade-in">
+          <div class="about-img-placeholder" id="dynamic-about-img">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z" />
+            </svg>
+          </div>
+        </div>
+        <div class="fade-in" style="transition-delay:.15s">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">Built on Truth,<br>Sustained by <em>Mercy</em></h2>
+          <p class="section-sub">Citadel of Truth and Mercy Assembly is a vibrant, Spirit-filled community of believers
+            committed to authentic worship, sound biblical teaching, and compassionate service.</p>
+          <br><br>
+          <p style="font-size:15px;line-height:1.85;color:var(--text-muted);">Founded on the unshakeable foundation of
+            God's Word, we believe every person is loved, valued, and called into purpose. Whether you are taking your
+            first steps in faith or have walked with God for decades, you will find a home here — a place to belong,
+            grow, and be sent out.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Years of Ministry</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">2K+</div>
+              <div class="stat-label">Family Members</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">30+</div>
+              <div class="stat-label">Ministries</div>
+            </div>
+          </div>
+          <br>
+          <a href="#beliefs" class="text-link">
+            Our Core Beliefs
+            <svg viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BELIEFS ─── -->
+  <section class="beliefs" id="beliefs">
+    <div class="container">
+      <div class="beliefs-head fade-in">
+        <div class="section-label" style="justify-content:center">What We Believe</div>
+        <h2 class="section-title">Grounded in the <em>Word of God</em></h2>
+        <p class="section-sub">Our faith is rooted in the eternal truths of Scripture — guiding every sermon, every
+          service, and every life transformed by His grace.</p>
+      </div>
+      <div class="beliefs-grid">
+        <div class="belief-card fade-in">
+          <div class="belief-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1z" />
+            </svg>
+          </div>
+          <h3>The Holy Scriptures</h3>
+          <p>We believe the Bible is the inspired, infallible, and authoritative Word of God — our complete guide for
+            life and godliness.</p>
+        </div>
+        <div class="belief-card fade-in" style="transition-delay:.1s">
+          <div class="belief-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+          </div>
+          <h3>The Holy Trinity</h3>
+          <p>We believe in one God — eternally existing as Father, Son, and Holy Spirit — three persons, one divine
+            essence.</p>
+        </div>
+        <div class="belief-card fade-in" style="transition-delay:.2s">
+          <div class="belief-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" />
+            </svg>
+          </div>
+          <h3>Salvation by Grace</h3>
+          <p>We believe salvation is a free gift through faith in Jesus Christ alone — not by works, but by grace
+            through His atoning sacrifice.</p>
+        </div>
+        <div class="belief-card fade-in" style="transition-delay:.3s">
+          <div class="belief-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+            </svg>
+          </div>
+          <h3>The Holy Spirit</h3>
+          <p>We believe in the present-day work of the Holy Spirit — empowering believers for service, witness, and
+            Christlike living.</p>
+        </div>
+        <div class="belief-card fade-in" style="transition-delay:.4s">
+          <div class="belief-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+            </svg>
+          </div>
+          <h3>The Church Body</h3>
+          <p>We believe the Church is the Body of Christ — called to worship, fellowship, discipleship, and proclaiming
+            the Gospel to all nations.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EVENTS ─── -->
+  <section class="events" id="events">
+    <div class="container">
+      <div class="events-header fade-in">
+        <div>
+          <div class="section-label">What's Coming</div>
+          <h2 class="section-title">Upcoming <em>Events</em></h2>
+        </div>
+        <a href="#" class="text-link">
+          View All Events
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+          </svg>
+        </a>
+      </div>
+      <div class="events-grid" id="dynamic-events">
+        <!-- Events injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY SLIDESHOW ─── -->
+  <section class="gallery">
+    <div class="gallery-head fade-in">
+      <div class="section-label" style="justify-content:center">Our Community</div>
+      <h2 class="section-title" style="text-align:center">Life at <em>Citadel</em></h2>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="gallery-track-wrap">
+      <div class="gallery-track" id="dynamic-gallery-1">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="gallery-track-wrap" style="margin-top:20px;">
+      <div class="gallery-track gallery-track-2" id="dynamic-gallery-2">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERMONS ─── -->
+  <section class="sermons" id="sermons">
+    <div class="container">
+      <div class="sermons-header fade-in">
+        <div>
+          <div class="section-label">The Word</div>
+          <h2 class="section-title">Recent <em>Sermons</em></h2>
+        </div>
+        <a href="#" class="text-link">
+          Full Sermon Archive
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+          </svg>
+        </a>
+      </div>
+      <div class="sermon-list" id="dynamic-sermons">
+        <!-- Sermons injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GIVE ─── -->
+  <section class="give" id="give">
+    <div class="container">
+      <div class="give-inner">
+        <div class="give-text fade-in">
+          <div class="section-label">Generosity</div>
+          <h2 class="section-title">Give &amp; <em>Sow</em> Into<br>God's Kingdom</h2>
+          <p>Your generosity fuels our mission — funding outreach, supporting families in need, empowering the next
+            generation, and advancing the Gospel within our city and beyond.</p>
+          <a href="#" class="btn-outline">Learn How We Use Funds</a>
+        </div>
+        <div class="give-card fade-in" style="transition-delay:.15s">
+          <h4>Make a Donation</h4>
+          <div class="give-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+          <div class="give-field">
+            <label>Amount (₦)</label>
+            <input type="number" placeholder="5,000" />
+          </div>
+          <div class="give-field">
+            <label>Giving Category</label>
+            <select>
+              <option>Tithes & Offering</option>
+              <option>Building Fund</option>
+              <option>Outreach & Missions</option>
+              <option>Scholarship Fund</option>
+            </select>
+          </div>
+          <button class="give-btn">Give Now ›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PASTOR ─── -->
+  <section class="pastor">
+    <div class="container">
+      <div class="pastor-inner">
+        <div class="pastor-img-wrap fade-in">
+          <div class="pastor-img-box" id="dynamic-pastor-img">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+          </div>
+          <div class="pastor-badge">
+            <p>20+</p>
+            <p>Years in Ministry</p>
+          </div>
+        </div>
+        <div class="pastor-text fade-in" style="transition-delay:.15s">
+          <div class="section-label">Leadership</div>
+          <h2 class="section-title">Meet Our <em>Pastor</em></h2>
+          <blockquote>"Every soul that walks through our doors carries a story God is not finished writing."
+          </blockquote>
+          <p>Pastor Emmanuel Adeyemi is the founding senior pastor of Citadel of Truth and Mercy Assembly. With over two
+            decades of ministry, he is known for his passionate, Word-centred preaching, his deep pastoral heart, and
+            his unwavering commitment to truth without compromise.</p>
+          <p>Alongside his wife, Minister Grace Adeyemi, he leads a church family that believes in radical hospitality,
+            transformative worship, and a love that extends far beyond Sunday mornings.</p>
+          <br>
+          <a href="#contact" class="text-link">
+            Connect With Our Leaders
+            <svg viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom:52px;">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">We Would Love to<br><em>Hear From You</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 7.5 12 7.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg></div>
+            <div class="contact-info-text">
+              <span>Our Address</span>
+              <span>Manna Bridal Building, Beside Firstbank, Unity Rd, Ilorin, Kwara State, Nigeria.</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+              </svg></div>
+            <div class="contact-info-text">
+              <span>Phone</span>
+              <span>+234 800 000 1234</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg></div>
+            <div class="contact-info-text">
+              <span>Email</span>
+              <span>citadeloftruthmercyassembly@gmail.com</span>
+            </div>
+          </div>
+          <div class="map-placeholder">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 7.5 12 7.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            View on Google Maps
+          </div>
+        </div>
+        <div class="fade-in" style="transition-delay:.15s">
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-field">
+                <label>First Name</label>
+                <input type="text" id="contact-fname" placeholder="John" required />
+              </div>
+              <div class="form-field">
+                <label>Last Name</label>
+                <input type="text" id="contact-lname" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Email Address</label>
+              <input type="email" id="contact-email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-field">
+              <label>Subject</label>
+              <select id="contact-subject">
+                <option>General Enquiry</option>
+                <option>Prayer Request</option>
+                <option>Partnership</option>
+                <option>First-time Visitor</option>
+                <option>Counselling</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea id="contact-message" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="button" class="form-submit" id="contact-submit">Send Message ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0">
+          <div class="nav-logo-icon" id="footer-logo">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2zm0 10.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 7.5 12 7.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm0 5c-2.25 0-4.2-1.25-5.24-3h10.48C16.2 16.25 14.25 17.5 12 17.5z" />
+            </svg>
+          </div>
+          <div class="nav-logo-text">
+            <span>Citadel of Truth</span>
+            <span style="opacity:.55">and Mercy Assembly</span>
+          </div>
+        </div>
+        <p>A Spirit-filled community committed to authentic worship, sound biblical teaching, and transforming lives
+          through the power of God's Word and love.</p>
+        <div class="socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#0d1b3e" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#0d1b3e" stroke-width="2" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#beliefs">Our Beliefs</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#sermons">Sermons</a></li>
+          <li><a href="#give">Give</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ministries</h4>
+        <ul>
+          <li><a href="#">Children's Ministry</a></li>
+          <li><a href="#">Youth Ministry</a></li>
+          <li><a href="#">Men's Fellowship</a></li>
+          <li><a href="#">Women's Ministry</a></li>
+          <li><a href="#">Marriage Ministry</a></li>
+          <li><a href="#">Outreach & Missions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Service Times</h4>
+        <ul>
+          <li><a href="#">Sunday 1st Service — 8:00 AM</a></li>
+          <li><a href="#">Midweek Reload — Wed 5:30 PM</a></li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Citadel of Truth and Mercy Assembly. All rights reserved.</span>
+      <span>Designed by lume &amp; studios.</span>
+    </div>
+  </footer>
+
+  <script src="church.js"></script>
+</body>
+
+</html>
