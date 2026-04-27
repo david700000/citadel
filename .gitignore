@@ -1,4 +1,8 @@
-node_modules
+node_modules/
 .env
-uploads
-
+.DS_Store
+backend/node_modules/
+backend/uploads/
+scratch/
+check_db.js
+backend/check_db.js

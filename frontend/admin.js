@@ -22,22 +22,48 @@
   const sermonsGrid = document.getElementById('admin-sermons-grid');
   const galleryGrid = document.getElementById('admin-gallery-grid');
 
+  // Mobile Toggle Logic
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const sidebar = document.getElementById('sidebar');
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      mobileToggle.classList.toggle('active');
+    });
+  }
+
+  // Close sidebar on nav click (mobile)
+  document.querySelectorAll('.sidebar-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.remove('open');
+        mobileToggle.classList.remove('active');
+      }
+    });
+  });
+
   // Initialization
   async function init() {
     if (authToken) {
-      if(loginOverlay) loginOverlay.style.display = 'none';
-      if(dashboard) dashboard.style.display = 'flex';
+      if (loginOverlay) loginOverlay.style.display = 'none';
+      if (dashboard) dashboard.style.display = 'flex';
       
+      // Show mobile header if logged in
+      const mobileHeader = document.querySelector('.mobile-header');
+      if (mobileHeader) mobileHeader.style.display = window.innerWidth <= 1024 ? 'flex' : 'none';
+
       const navUsers = document.getElementById('nav-users');
-      if(navUsers) navUsers.style.display = adminRole === 'superadmin' ? 'block' : 'none';
-      
+      if (navUsers) navUsers.style.display = adminRole === 'superadmin' ? 'block' : 'none';
+
       await fetchData();
-      if(adminRole === 'superadmin') {
+      if (adminRole === 'superadmin') {
         await fetchUsers();
       }
     } else {
-      if(loginOverlay) loginOverlay.style.display = 'flex';
-      if(dashboard) dashboard.style.display = 'none';
+      if (loginOverlay) loginOverlay.style.display = 'flex';
+      if (dashboard) dashboard.style.display = 'none';
+      const mobileHeader = document.querySelector('.mobile-header');
+      if (mobileHeader) mobileHeader.style.display = 'none';
     }
   }
 
