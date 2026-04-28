@@ -1,8 +1,4 @@
 node_modules/
 .env
-.DS_Store
-backend/node_modules/
-backend/uploads/
-scratch/
-check_db.js
-backend/check_db.js
+uploads/
+*.log

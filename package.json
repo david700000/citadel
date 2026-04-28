@@ -1,14 +1,27 @@
 {
-  "name": "citadel-church-website",
+  "name": "church-website",
   "version": "1.0.0",
-  "description": "Citadel of Truth and Mercy Assembly Website",
-  "main": "backend/server.js",
+  "description": "Citadel of Truth and Mercy Assembly - Backend API",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.9.5",
+    "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.9.16"
+  }
 }
